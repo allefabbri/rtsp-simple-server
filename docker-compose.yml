@@ -1,0 +1,14 @@
+version: "2.2"
+
+services:
+  rtspserver:
+    container_name: rtsp-server
+    image: aler9/rtsp-simple-server
+    volumes:
+      - ./rtsp-simple-server.yml:/rtsp-simple-server.yml     # config
+      - ./output:/logs                                       # log
+    ports:
+      - 1935:1935 # rtmp
+      - 8554:8554 # rtsp
+    environment:
+      - RTSP_PROTOCOLS=tcp
